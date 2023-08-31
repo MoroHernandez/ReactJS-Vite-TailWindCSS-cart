@@ -9,5 +9,5 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 =======
 # PreEntrega1-Hernandez
-First com React TailWindCSS project
->>>>>>> ba11e715dd09d9c12ebbf6540b33878c8bcb689b
+First comm React TailWindCSS project
+
