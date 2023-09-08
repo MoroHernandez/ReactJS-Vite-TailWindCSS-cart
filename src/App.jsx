@@ -5,15 +5,14 @@ import ItemListContainer from './components/ItemListContainer';
 
 const App = () => {
   
-  const greeting = "Bienvenidos al MorCoffeeStore."
   
   return (
 
     <>
-      <div className= "white min-h-screen">
+      <div className= "min-h-screen">
           <NavBar />
         <div className="mx-auto max-w-screen-lg">
-          <ItemListContainer greeting = {greeting} />
+          <ItemListContainer />
         </div>
       </div>
     </>
