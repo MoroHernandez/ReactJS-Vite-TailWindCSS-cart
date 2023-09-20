@@ -1,4 +1,5 @@
 import React from 'react'
+import imagenGranos  from "../assets/granos.png"
 
 
 const ItemDetail = ( { data } ) => <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -12,7 +13,7 @@ const ItemDetail = ( { data } ) => <div className="p-3 grid grid-cols-1 md:grid-
                                         <div className="flex h-28 gap-7">
                                     
                                         <img
-                                        src="" alt="" className="w-28 shadow-lg"
+                                            src={imagenGranos} alt='granos de cafe' className="w-28 shadow-lg"
                                         />
 
                                             <div className="flex-1 flex flex-col justify-between mr-9">
@@ -21,7 +22,7 @@ const ItemDetail = ( { data } ) => <div className="p-3 grid grid-cols-1 md:grid-
                                         
                                             <section className="flex justify-between items-center gap-5 xl:mt-3">
                                             
-                                                <p className="text-green-600 font-semibold font-custom tracking-wide text-xl">$ {data.precio}</p>
+                                                <p className="text-green-600 font-semibold font-custom tracking-wide text-xl">${data.precio}</p>
                                                 <button className=" font-custom bg-transparent hover:bg-green-600 text-bloack hover:text-white py-1 w-20 border border-green-600 hover:border-transparent rounded">
                                                     Agregar
                                                 </button>

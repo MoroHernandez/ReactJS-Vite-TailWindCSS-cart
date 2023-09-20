@@ -30,7 +30,7 @@ const ItemDetailContainer = ({}) => {
 
         setTimeout (() => {
             resolve(item);
-        }, 5000)
+        }, 10)
 
       } else {
         reject({

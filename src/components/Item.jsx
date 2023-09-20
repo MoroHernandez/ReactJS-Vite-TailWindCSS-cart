@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import imagenGranos  from "../assets/granos.png"
 
-const Item = ({name, descripcion, aromatizado, id }) => {
+const Item = ({name, descripcion, aromatizado, id}) => {
 
 
   return (
@@ -15,9 +16,7 @@ const Item = ({name, descripcion, aromatizado, id }) => {
 
           <div className="flex h-28 gap-7">
             
-            <img
-              src="" alt="" className="w-28 shadow-lg"
-            />
+            <img src={imagenGranos} alt='granos de cafe' className="w-28 shadow-lg" />
 
             <div className="flex-1 flex flex-col justify-between mr-9">
 
