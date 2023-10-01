@@ -1,52 +1,58 @@
-
 import ItemList from './ItemList';
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import {getFirestore, collection, getDocs, query, where } from 'firebase/firestore'
+import Loading from './Loading';
+
+
 
 
 const ItemListContainer = ({}) => {
-  const { categoria } = useParams()
-  const productos = [
-    
-    { id: 1, categoria:"A", name: "Chocolate", descripcion:"El chocolate más puro", aromatizado:"Aromatizado", price: 500 , stock: 100},
-    { id: 2, categoria:"A", name: "Vainilla", descripcion: "Dulce cápsula de vainilla", aromatizado:"Aromatizado", price: 500, stock: 100},
-    { id: 3, categoria:"A", name: "Caramelo", descripcion: "Hecha con ramas ultra finas", aromatizado:"Aromatizado", price: 450, stock: 100},
-    { id: 4, categoria:"B", name: "Canela", descripcion:"Artesanal preparacion", aromatizado:"Aromatizado", price: 500 , stock: 100},
-    { id: 5, categoria:"B", name: "Almendra", descripcion: "Frutos secos del sur", aromatizado:"Aromatizado", price: 500, stock: 100},
-    { id: 6, categoria:"B", name: "Frutilla", descripcion: "Las mejores frutras rojas", aromatizado:"Aromatizado", price: 450, stock: 100}
-    
-    
-  ]
-
   
-    const mostrarProductos = new Promise((resolve, reject) => {
-      if (productos.length > 0) {
-        setTimeout(() => {
-          resolve(productos)
-        }, 5000)
-      } else {
-        reject("No se pueden mostrar los productos")
-      }
-    })
-    
-    mostrarProductos
-    .then((resultado) => {
-      console.log(resultado)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { categoria } = useParams()
 
-    
-    const filtrarProductos = categoria ? productos.filter((producto) => producto.categoria === categoria ) : productos
+    useEffect(() => {
+      const querydb = getFirestore();
+      const queryCollection = collection(querydb, 'cafe');
+
+      setLoading(true);
+
+      if (categoria) {
+
+        const queryFilter = query(queryCollection, where('categoria', '==', categoria))
+        getDocs(queryFilter)
+          .then(res => {
+            setData(res.docs.map(product => ({id: product.id, ...product.data() })))
+            setLoading(false);
+      
+          })
+          
+        } else {
+        
+        getDocs(queryCollection)
+          .then(res => {
+            setData(res.docs.map(product => ({id: product.id, ...product.data()})))
+            setLoading(false);
+          })
+          
+      }
+
+    }, [categoria])
     
     return (
       
       <>
-        
-        <ItemList productos={filtrarProductos}/>
+        {loading ? (
+          <Loading />
+        ) : (
+          <ItemList data={data}/>
+
+        )}
       </>
       
-      );
+    );
 };
 
 export default ItemListContainer;

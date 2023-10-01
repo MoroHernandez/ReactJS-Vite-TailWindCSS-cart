@@ -1,18 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-      "./index.html",
-      "./src/**/*.{js,jsx}",
-      "./node_modules/tw-elements/dist/js/**/*.js",
-  ],
+
+import withMT from "@material-tailwind/react/utils/withMT";
+ 
+export default withMT({
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-      custom: ['Nespresso Lucas Med',],
-      items: ['Open Sans Light'],
+        custom: ['Nespresso Lucas Med',],
+        items: ['Open Sans Light'],
+      },
     },
   },
   plugins: [require("tw-elements/dist/plugin.cjs")],
   darkMode: "class"
-}
-}
+});
