@@ -11,4 +11,3 @@ Currently, two official plugins are available:
 # PreEntrega1-Hernandez
 First comm React TailWindCSS project
 
-![page-route gif](https://github.com/MoroHernandez/ReactJS-TailWindCSS-project/assets/125918302/74c2a19e-7851-4c8d-bc88-e89bf9d22232)
