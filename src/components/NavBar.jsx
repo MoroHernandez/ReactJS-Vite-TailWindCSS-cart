@@ -49,6 +49,7 @@ import {
                     type="button"
                     id="dropdownMenuButton9"
                     data-te-dropdown-toggle-ref
+                    onClick={()=>setShowMenu(!showMenu)}
                     aria-expanded="false"
                     data-te-ripple-init>
                     Cafe
@@ -67,7 +68,7 @@ import {
                     </span>
                 </button>
                 <ul
-                    className="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                    className={`absolute z-[1000] float-left m-0 ${ showMenu ? "block" : "hidden" } min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block`}
                     aria-labelledby="dropdownMenuButton9"
                     data-te-dropdown-menu-ref>
                     <li>
